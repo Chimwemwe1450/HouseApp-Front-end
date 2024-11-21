@@ -1,0 +1,7 @@
+{
+  "name": "HouseholdInsuranceApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

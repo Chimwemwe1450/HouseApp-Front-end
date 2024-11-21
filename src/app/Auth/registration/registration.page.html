@@ -1,0 +1,61 @@
+
+<ion-content>
+  <div class="login-container">
+
+    <h1 class="login-heading">Register User</h1>
+
+    <form (ngSubmit)="onReg()" #RegForm="ngForm">
+        
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input 
+          type="text" 
+          [(ngModel)]="RegData.username" 
+          name="username" 
+          required>
+        </ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="RegForm.submitted && !RegForm.controls['email']?.valid">
+      username  is required.
+      </ion-note>
+
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input 
+          type="email" 
+          [(ngModel)]="RegData.email" 
+          name="email" 
+          required>
+        </ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="RegForm.submitted && !RegForm.controls['email']?.valid">
+        Email is required.
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input 
+        fill="outline"
+          type="password" 
+          [(ngModel)]="RegData.password" 
+          name="password" 
+          required>
+        </ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="RegForm.submitted && !RegForm.controls['password']?.valid">
+        Password is required.
+      </ion-note>
+
+
+      <ion-button 
+        expand="full" 
+        type="submit" 
+        [disabled]="!RegForm.valid">
+        Login
+      </ion-button>
+
+      <span class="register-link" routerLink="/login" >Already have an account? <span  routerLink="/login">Login</span></span>
+    </form>
+  </div>
+</ion-content>

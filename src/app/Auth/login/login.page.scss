@@ -1,20 +1,26 @@
 .login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    height: 90%;
-    padding: 16px;
-  }
-  
-  .login-heading {
-    text-align: center; 
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 24px; 
-    color: #3880ff; 
-  }
-  
-  ion-button {
-    margin-top: 30px; 
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  height: 90%;
+  padding: 16px;
+}
+
+.login-heading {
+  text-align: center; 
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px; 
+  color: #3880ff; 
+}
+
+ion-button {
+  margin-top: 30px; 
+}
+
+.register-link {
+  display: block;
+  margin-top: 30px; /* Adjust this value to your liking */
+  text-align: center;
+}

@@ -33,7 +33,7 @@ export class LoginPage {
         if (user) {
           console.log('Login successful');
     
-          this.router.navigate(['/home']);
+          this.router.navigate(['/addingahouse']);
         } else {
           console.error('Login failed: Invalid credentials');
       

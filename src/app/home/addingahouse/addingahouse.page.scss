@@ -1,0 +1,104 @@
+.upload-label {
+    display: block;
+    background-color: #4a90e2;
+    padding: 12px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-label:hover {
+    background-color: #357ab7;
+  }
+  
+  ion-item {
+    margin-bottom: 15px;
+  }
+  
+  ion-card {
+    --background: #f9f9f9;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-card-header {
+    background-color: #4a90e2;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  ion-card-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  ion-card-content {
+    padding: 20px;
+  }
+  
+  .uploaded-images {
+    margin-top: 20px;
+  }
+  
+  .uploaded-images img {
+    max-width: 100%;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .uploaded-images .image-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  .uploaded-images .remove-image {
+    color: #ff0000;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .uploaded-images .remove-image:hover {
+    color: #d40000;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  ion-button[disabled] {
+    background-color: #ccc;
+  }
+  
+  ion-button:not([disabled]):hover {
+    background-color: #357ab7;
+    transition: background-color 0.3s ease;
+  }
+  
+  ion-input, ion-textarea {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  ion-input:focus, ion-textarea:focus {
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.6);
+  }
+  
+  ion-label {
+    font-size: 14px;
+    color: #333;
+  }
+  

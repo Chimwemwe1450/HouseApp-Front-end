@@ -7,6 +7,7 @@
     <ion-card-content>
       <form (ngSubmit)="onSubmit()">
 
+        <!-- House Address -->
         <ion-item>
           <ion-label position="floating">Address</ion-label>
           <ion-input
@@ -17,7 +18,7 @@
           ></ion-input>
         </ion-item>
 
-
+        <!-- House Description -->
         <ion-item>
           <ion-label position="floating">Description</ion-label>
           <ion-textarea
@@ -27,6 +28,7 @@
           ></ion-textarea>
         </ion-item>
 
+        <!-- Geolocation -->
         <ion-item>
           <ion-label position="stacked">Geolocation</ion-label>
           <ion-button expand="block" (click)="getGeolocation()">
@@ -37,7 +39,9 @@
           </p>
         </ion-item>
 
+        <p>Users can add multiple images per house</p>
 
+        <!-- File Upload -->
         <ion-item>
           <label class="upload-label" for="fileInput">Click to Select Images</label>
           <input
@@ -50,6 +54,7 @@
           />
         </ion-item>
 
+        <!-- Uploaded Images -->
         <div *ngFor="let image of house.images; let i = index" class="uploaded-images">
           <ion-item>
             <ion-label position="floating">Damage Description</ion-label>
@@ -60,14 +65,33 @@
               required
             ></ion-input>
           </ion-item>
-          <img [src]="image.url" alt="damage image" width="100" />
-          <p class="image-description">{{ image.description }}</p>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img [src]="image.url" alt="damage image" width="100" />
+            <ion-button
+              color="danger"
+              size="small"
+              (click)="deleteImage(i)"
+            >
+              Delete
+            </ion-button>
+          </div>
         </div>
 
+        <!-- Delete All Button -->
+        <ion-button
+          color="danger"
+          expand="block"
+          *ngIf="house.address || house.description || house.images.length > 0"
+          (click)="deleteHouse()"
+        >
+          Delete House
+        </ion-button>
+
+        <!-- Submit Button -->
         <ion-button
           type="submit"
           expand="block"
-          [disabled]="!house.address || !house.description"
+          [disabled]="!house.address || !house.description || house.images.length === 0"
         >
           Add House
         </ion-button>

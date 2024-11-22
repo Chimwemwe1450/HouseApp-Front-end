@@ -61,7 +61,20 @@ export class AddingahousePage {
       reader.readAsDataURL(file);
     }
   }
-
+  deleteImage(index: number) {
+    this.house.images.splice(index, 1); 
+  }
+  deleteHouse() {
+    if (confirm('Are you sure you want to delete this house and all its images?')) {
+      // Clear the house object
+      this.house = {
+        address: '',
+        description: '',
+        geolocation: null,
+        images: [],
+      };
+    }
+  }
   onSubmit() {
 
     this.houseService.addHouse(this.house).subscribe(
@@ -76,7 +89,7 @@ export class AddingahousePage {
         };
       },
       error => {
-        console.error('Error adding house:', error);
+     
         this.showError('There was an error adding the house. Please try again.');
       }
     );

@@ -19,13 +19,11 @@ export class LoginPage {
   constructor(private http: HttpClient, private router: Router, private user: UserService) {}
 
   onLogin() {
-    console.log('Login Data:', this.loginData);
 
 
     this.user.getUsers().subscribe(response => {
 
-      console.log('Response:', response);
-
+   
  
       if (response.status === 'success' && Array.isArray(response.data)) {
         const user = response.data.find((user: any) => user.email === this.loginData.email && user.password === this.loginData.password);
@@ -35,11 +33,11 @@ export class LoginPage {
     
           this.router.navigate(['/addingahouse']);
         } else {
-          console.error('Login failed: Invalid credentials');
+          alert('Login failed: Invalid credentials');
       
         }
       } else {
-        console.error('Response is not in the expected format:', response);
+        alert('Response is not in the expected format:');
       }
     });
   }

@@ -1,0 +1,77 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Add New House</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="onSubmit()">
+
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="house.address"
+            name="address"
+            required
+          ></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea
+            [(ngModel)]="house.description"
+            name="description"
+            required
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Geolocation</ion-label>
+          <ion-button expand="block" (click)="getGeolocation()">
+            Get Current Location
+          </ion-button>
+          <p *ngIf="house.geolocation">
+            Lat: {{ house.geolocation.lat }}, Lng: {{ house.geolocation.lng }}
+          </p>
+        </ion-item>
+
+
+        <ion-item>
+          <label class="upload-label" for="fileInput">Click to Select Images</label>
+          <input
+            id="fileInput"
+            type="file"
+            (change)="onImageUpload($event)"
+            accept="image/*"
+            multiple
+            style="display:none"
+          />
+        </ion-item>
+
+        <div *ngFor="let image of house.images; let i = index" class="uploaded-images">
+          <ion-item>
+            <ion-label position="floating">Damage Description</ion-label>
+            <ion-input
+              type="text"
+              [(ngModel)]="image.description"
+              name="description{{i}}"
+              required
+            ></ion-input>
+          </ion-item>
+          <img [src]="image.url" alt="damage image" width="100" />
+          <p class="image-description">{{ image.description }}</p>
+        </div>
+
+        <ion-button
+          type="submit"
+          expand="block"
+          [disabled]="!house.address || !house.description"
+        >
+          Add House
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

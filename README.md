@@ -5,4 +5,4 @@ latest angulur version -  npm i @angular/cli / update angular version
 
 run on ng serve to test  on broweser  
 
-Known issues is cores being blocked by the back end on android devices run test with back and and added the necessary fixed but still facing the issue
+Known issues is cores being blocked by the back end on android devices run test with back and and added the necessary fixed but still facing the issue its working 100% on the broweser but issue on android 

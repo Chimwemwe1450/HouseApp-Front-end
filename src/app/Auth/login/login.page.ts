@@ -15,9 +15,15 @@ export class LoginPage {
     email: '',
     password: ''
   };
-
+  isModalOpen: boolean = false;
   constructor(private http: HttpClient, private router: Router, private user: UserService) {}
+  openModal() {
+    this.isModalOpen = true;
+  }
 
+  closeModal() {
+    this.isModalOpen = false;
+  }
   onLogin() {
 
 

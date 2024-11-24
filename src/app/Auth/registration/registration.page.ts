@@ -31,7 +31,7 @@ export class RegistrationPage {
         }
       },
       error => {
-       alert('Error creating user:');
+       alert(error);
    
       }
     );

@@ -34,4 +34,4 @@ CORS (Cross-Origin Resource Sharing) requests are being blocked by the backend w
 This issue persists despite implementing necessary CORS fixes in the backend configuration.
 Status:
 
-The app functions correctly in the browser but encounters CORS-related problems on Android devices cause its using a local API not a global API .
+The app functions correctly in the browser but encounters CORS-related problems on Android devices cause its using a local back end .

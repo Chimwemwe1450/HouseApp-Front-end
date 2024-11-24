@@ -66,7 +66,7 @@ export class AddingahousePage {
   }
   deleteHouse() {
     if (confirm('Are you sure you want to delete this house and all its images?')) {
-      // Clear the house object
+   
       this.house = {
         address: '',
         description: '',

@@ -17,11 +17,10 @@ export class RegistrationPage {
   constructor(private userService: UserService, private router: Router) {}
 
   onReg() {
-    console.log('Reg Data:', this.RegData);
+  
 
     this.userService.createUser(this.RegData).subscribe(
       response => {
-        console.log('User created successfully:', response);
 
         if (response.status === 'success') {
 
@@ -32,7 +31,7 @@ export class RegistrationPage {
         }
       },
       error => {
-        console.error('Error creating user:', error);
+       alert('Error creating user:');
    
       }
     );

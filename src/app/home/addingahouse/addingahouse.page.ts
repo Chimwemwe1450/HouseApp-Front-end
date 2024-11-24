@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HouseService } from 'src/app/house.service';
 import { Geolocation } from '@capacitor/geolocation';
 import { AlertController } from '@ionic/angular';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
   selector: 'app-addingahouse',
@@ -13,15 +14,16 @@ export class AddingahousePage {
     address: '',
     description: '',
     geolocation: null as { lat: number; lng: number } | null,
-    images: [] as { url: string, description: string }[],
+    images: [] as { url: string; description: string }[],
   };
 
   constructor(
     private houseService: HouseService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private imageCompress: NgxImageCompressService
   ) {}
 
-
+  // Fetch geolocation
   async getGeolocation() {
     try {
       const position = await Geolocation.getCurrentPosition();
@@ -34,7 +36,7 @@ export class AddingahousePage {
     }
   }
 
-
+  // Show error alert
   async showError(message: string) {
     const alert = await this.alertController.create({
       header: 'Error',
@@ -44,29 +46,42 @@ export class AddingahousePage {
     await alert.present();
   }
 
-
-  onImageUpload(event: any) {
+  // Handle image upload with compression
+  async onImageUpload(event: any) {
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const reader = new FileReader();
-      
-      reader.onload = (e: any) => {
+
+      reader.onload = async (e: any) => {
+        const base64Image = e.target.result;
+
+        // Compress the image
+        const compressedImage = await this.imageCompress.compressFile(
+          base64Image, // Image source
+          -1, // Orientation; -1 for default
+          50, // Quality: 1 (low) to 100 (high)
+          50 // Ratio: 1 (original) to 100 (high compression)
+        );
+
         this.house.images.push({
-          url: e.target.result, 
-          description: ''
+          url: compressedImage,
+          description: '',
         });
       };
 
       reader.readAsDataURL(file);
     }
   }
+
+  // Delete an image
   deleteImage(index: number) {
-    this.house.images.splice(index, 1); 
+    this.house.images.splice(index, 1);
   }
+
+  // Delete the house
   deleteHouse() {
     if (confirm('Are you sure you want to delete this house and all its images?')) {
-   
       this.house = {
         address: '',
         description: '',
@@ -75,23 +90,34 @@ export class AddingahousePage {
       };
     }
   }
+
+  // Submit house data
   onSubmit() {
+    if (!this.house.address || !this.house.description || !this.house.geolocation) {
+      this.showError('Please complete all required fields before submitting.');
+      return;
+    }
 
     this.houseService.addHouse(this.house).subscribe(
-      response => {
+      (response) => {
         console.log('House added successfully:', response);
         alert('House added successfully!');
-        this.house = {
-          address: '',
-          description: '',
-          geolocation: null,
-          images: [],
-        };
+        this.resetForm();
       },
-      error => {
-     
+      (error) => {
+        console.error('Error adding house:', error);
         this.showError('There was an error adding the house. Please try again.');
       }
     );
+  }
+
+  // Reset form after submission
+  resetForm() {
+    this.house = {
+      address: '',
+      description: '',
+      geolocation: null,
+      images: [],
+    };
   }
 }

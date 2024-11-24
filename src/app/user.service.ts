@@ -8,25 +8,17 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost/phpscript/'; 
+  private apiUrl = 'https://633a912f471b8c39556fad0f.mockapi.io/Registration'; 
 
   constructor(private http: HttpClient) {}
 
-  createUser(user: { name: string, email: string, password: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}users.php`, user);
+  createUser(user: { Email: string; Password: string }): Observable<any> {
+    return this.http.post<any>(this.apiUrl, user); 
   }
-
-
+  
+  // Get all users
   getUsers(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}users.php`, { responseType: 'json' })
-      .pipe(
-        map(response => {
-          
-          if (response && response.error) {
-            return { status: 'error', message: response.error.message };
-          }
-          return response;
-        })
-      );
+    return this.http.get<any>(this.apiUrl);
   }
+
 }

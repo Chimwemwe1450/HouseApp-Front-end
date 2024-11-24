@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // For navigation
-import { HttpClient } from '@angular/common/http'; // For HTTP requests
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 
 @Component({
@@ -13,10 +10,12 @@ import { UserService } from 'src/app/user.service';
 export class LoginPage {
   loginData = {
     email: '',
-    password: ''
+    password: '',
   };
   isModalOpen: boolean = false;
-  constructor(private http: HttpClient, private router: Router, private user: UserService) {}
+
+  constructor(private router: Router, private userService: UserService) {}
+
   openModal() {
     this.isModalOpen = true;
   }
@@ -24,27 +23,29 @@ export class LoginPage {
   closeModal() {
     this.isModalOpen = false;
   }
+
   onLogin() {
-
-
-    this.user.getUsers().subscribe(response => {
-
+    this.userService.getUsers().subscribe(
+      (users) => {
    
- 
-      if (response.status === 'success' && Array.isArray(response.data)) {
-        const user = response.data.find((user: any) => user.email === this.loginData.email && user.password === this.loginData.password);
+        const user = users.find(
+          (u: any) =>
+            u.Email === this.loginData.email && 
+            u.Password === this.loginData.password 
+        );
 
         if (user) {
           console.log('Login successful');
-    
+       
           this.router.navigate(['/addingahouse']);
         } else {
           alert('Login failed: Invalid credentials');
-      
         }
-      } else {
-        alert('Response is not in the expected format:');
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+        alert('An error occurred while logging in. Please try again later.');
       }
-    });
+    );
   }
 }

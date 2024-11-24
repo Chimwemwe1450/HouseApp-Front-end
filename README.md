@@ -35,3 +35,6 @@ This issue persists despite implementing necessary CORS fixes in the backend con
 Status:
 
 The app functions correctly in the browser but encounters CORS-related problems on Android devices cause its using a local back end .
+
+
+Commmon work around is  i created it with mockAPI cause My SQL is  causing corse issue  I created a branch for APK  Mock API so you will be able to use it 

@@ -2,7 +2,6 @@ Frontend Requirements
 To set up and run the project, ensure the following prerequisites are met:
 
 Node.js
-
 Version: v18.19.0
 Use nvm (Node Version Manager) to manage and back up your Node.js version.
 nvm install 18.19.0
@@ -24,12 +23,11 @@ ng update @angular/cli
 Running the Project
 
 Use the following command to serve the app in the browser for testing:
-
 ionic serve 
+
 Known Issues
 CORS Issue on Android Devices
 Issue:
-
 CORS (Cross-Origin Resource Sharing) requests are being blocked by the backend when testing on Android devices.
 This issue persists despite implementing necessary CORS fixes in the backend configuration.
 Status:
@@ -37,4 +35,9 @@ Status:
 The app functions correctly in the browser but encounters CORS-related problems on Android devices cause its using a local back end .
 
 
-Commmon work around is  i created it with mockAPI cause My SQL is  causing corse issue  I created a branch for APK  Mock API so you will be able to use it 
+Commmon work around is  i created it with mockAPI cause My SQL is  causing corse issue  I created a branch for APK  Mock API so you will be able to use  the APK for testing same logic as backend and my SQL
+use ionic cap build to build and test it you will need 
+Node.js
+Version: v18.19.0
+npm install -g @ionic/cli
+Android studio  latest version 

@@ -35,7 +35,7 @@ export class LoginPage {
         const user = response.data.find((user: any) => user.email === this.loginData.email && user.password === this.loginData.password);
 
         if (user) {
-          console.log('Login successful');
+
     
           this.router.navigate(['/addingahouse']);
         } else {

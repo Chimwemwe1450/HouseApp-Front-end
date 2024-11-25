@@ -1,40 +1,41 @@
-Frontend Requirements
-To set up and run the project, ensure the following prerequisites are met:
-
-Node.js
-
-Version: v18.19.0
-Use nvm (Node Version Manager) to manage and back up your Node.js version.
-nvm install 18.19.0
-nvm use 18.19.0
-Ionic Framework
-
-Install the latest version of Ionic CLI globally:
-
-npm install -g @ionic/cli
-Angular CLI
-
-Install or update Angular to the latest version:
-
-npm install @angular/cli
-Or update Angular to the latest version:
-bash
-Copy code
-ng update @angular/cli
+Setup and Configuration Guide
+Prerequisites
+1.	Node.js
+	Required version: v18.19.0
+	Use nvm (Node Version Manager) to manage versions:
+nvm install 18.19.0 nvm use 18.19.0 
+2.	Ionic Framework
+	Install the latest Ionic CLI globally:
+npm install -g @ionic/cli 
+3.	Angular CLI
+	To install or update Angular CLI:
+npm install @angular/cli 
+	If Angular CLI is already installed, update it:
+ng update @angular/cli 
+----------------------
 Running the Project
-
-Use the following command to serve the app in the browser for testing:
-
+1. Development Mode (Browser Testing)
+·	To serve the app locally in a browser for testing:
 ionic serve 
+
+2. APK Build for Android Testing
+·	Build the app for Android testing:
+ionic cap build android 
+·	Open the project in Android Studio:
+ionic cap open android 
+·	Note: Ensure Android Studio is installed and updated to the latest version.
+----------------------
 Known Issues
-CORS Issue on Android Devices
-Issue:
+1. CORS Issues on Android Devices
+·	Problem: CORS requests are being blocked by the backend server when testing the app on Android devices, even though backend fixes have been applied. This occurs because the backend is hosted locally.
+·	Observation: Browser testing works fine because most modern browsers can bypass CORS restrictions during local development using developer tools.
+2. Current Workaround
+	A branch named Mock-Api-Apk has been created to address this issue.
+	This branch utilizes MockAPI to simulate backend functionality without CORS restrictions.
+	Steps to Build and Test Using MockAPI:
+1.	Switch to the branch:
+git checkout Mock-Api-Apk 
+2.	Build the APK and proceed with testing.
+ionic cap build android
 
-CORS (Cross-Origin Resource Sharing) requests are being blocked by the backend when testing on Android devices.
-This issue persists despite implementing necessary CORS fixes in the backend configuration.
-Status:
 
-The app functions correctly in the browser but encounters CORS-related problems on Android devices cause its using a local back end .
-
-
-Commmon work around is  i created it with mockAPI cause My SQL is  causing corse issue  I created a branch for APK  Mock API so you will be able to use it 

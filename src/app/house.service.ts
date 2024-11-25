@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HouseService {
-  private apiUrl = 'https://633a912f471b8c39556fad0f.mockapi.io/Save-house'; // Update to the correct API endpoint
+  private apiUrl = 'https://633a912f471b8c39556fad0f.mockapi.io/Save-house'; 
 
   constructor(private http: HttpClient) {}
 

@@ -18,7 +18,7 @@ export class RegistrationPage {
   onReg() {
     this.userService.createUser(this.RegData).subscribe(
       (response) => {
-        console.log('Registration Response:', response);
+  
 
         if (response && response.id) {
           alert('Registration successful!');
@@ -29,7 +29,7 @@ export class RegistrationPage {
         }
       },
       (error) => {
-        console.error('Registration Error:', error);
+
         alert('An error occurred during registration. Please try again.');
       }
     );

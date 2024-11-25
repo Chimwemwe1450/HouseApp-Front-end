@@ -35,7 +35,7 @@ export class LoginPage {
         );
 
         if (user) {
-          console.log('Login successful');
+        
        
           this.router.navigate(['/addingahouse']);
         } else {

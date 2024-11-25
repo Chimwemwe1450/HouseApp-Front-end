@@ -59,9 +59,9 @@ export class AddingahousePage {
         // Compress the image
         const compressedImage = await this.imageCompress.compressFile(
           base64Image, // Image source
-          -1, // Orientation; -1 for default
-          50, // Quality: 1 (low) to 100 (high)
-          50 // Ratio: 1 (original) to 100 (high compression)
+          -1, 
+          50, 
+          50
         );
 
         this.house.images.push({
